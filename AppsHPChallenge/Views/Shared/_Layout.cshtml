@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">Andrés Wong</p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Index", "Index", "Home", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Info", "Index", "Information", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Assumptions", "Assumptions", "Information", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Documents", "Downloads", "Information", new { area = "" }, null)</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

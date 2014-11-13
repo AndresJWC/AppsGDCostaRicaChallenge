@@ -1,0 +1,51 @@
+﻿@model IList<AppsHPChallenge.Models.Player>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>App GD Costa Rica Challenge</h1>
+            </hgroup>
+            <h2>Upload Championship File</h2>
+            @using (Html.BeginForm("Index",
+                            "Home",
+                            FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+            {
+                <input class="extraSize" type="file" name="file" id="file" />
+                <input class="extraSize" type="submit" value="Upload" />
+                <br /><br />
+                <label class="error">
+                    @ViewBag.Message
+                </label>
+            }
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+
+        <h3>Top Players:</h3>
+
+        <table class="rankingTable" border="1" style="width:100%">
+            <tr>
+                <td class="boldText">Name</td>
+                <td class="boldText">Points</td>
+            </tr>
+
+            @foreach (var player in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.Points)
+                    </td>
+                </tr>
+            }
+        </table>
+
+        @using (Html.BeginForm("ResetRanking", "Home", FormMethod.Post))
+        {
+            <button class="resetButton" title="Reset Ranking" type="submit">Reset Ranking</button>
+        }
+    </section>
+</div>
