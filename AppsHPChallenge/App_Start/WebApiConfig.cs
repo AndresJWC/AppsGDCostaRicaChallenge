@@ -16,7 +16,7 @@ namespace AppsHPChallenge
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/championship/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
