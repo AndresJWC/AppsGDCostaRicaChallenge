@@ -1,0 +1,58 @@
+﻿@model IList<string>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Championship Documents</h1>
+            </hgroup>
+            <p>Examples and uploaded documents</p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>API Documentation</th>
+                    </tr>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Link</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Model.Where(document => document.Contains(".pdf")).First().Split('\\').Last()
+                        </td>
+                        <td>
+                            @Html.ActionLink("Download", "Download", new { ImageName = Model.Where(document => document.Contains(".pdf")).First() })
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Championship Documents</th>
+                    </tr>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Link</th>
+                    </tr>
+
+                    @foreach (string document in Model)
+                    {
+                        if (document.Contains(".txt"))
+                        {
+                            <tr>
+                                <td>
+                                    @document.Split('\\').Last()
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Download", "Download", new { ImageName = document })
+                                </td>
+                            </tr>
+                        }
+                    };
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
